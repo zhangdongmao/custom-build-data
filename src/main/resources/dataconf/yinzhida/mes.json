@@ -1,0 +1,681 @@
+{
+  "scenarios": [
+    {
+      "desc": "场景1：向w_prj_atl_wip_his_para表插入一条记录",
+      "tableInfos": [
+        {
+          "desc": "INSERT保险客户记录",
+          "columns": [
+            {
+              "columnName": "guid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "GLOBAL_AUTO_INCREMENT"
+              }
+            },
+            {
+              "columnName": "wip_his_guid",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"wip_his_guid"
+              }
+            },
+            {
+              "columnName": "queryserialno",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_STRING"
+              }
+            },
+            {
+              "columnName": "operation",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray": [
+                  "1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"
+                ,"21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40"
+                ,"41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"
+                ,"61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80"
+                ,"81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100"
+                ,"101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120"
+                ,"121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140"
+                ,"141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160"
+                ,"161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180"
+                ,"181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200"
+                ]
+              }
+            },{
+              "columnName": "reworkprocessid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "characteristic",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_STRING"
+              }
+            },
+            {
+              "columnName": "characteristicrevision",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"characteristicrevision"
+              }
+            },
+            {
+              "columnName": "characteristictype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray": [1, 2, 3, 4, 5, 6]
+              }
+            },
+            {
+              "columnName": "characteristicclass",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "REFERENCE",
+                "refColumnExpression":"${1.w_prj_atl_wip_his_para.characteristictype}"
+              }
+            },
+            {
+              "columnName": "uppercontrollimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "targetvalue",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "lowercontrollimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "testvalue",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "testattribute",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"testattribute"
+              }
+            },
+            {
+              "columnName": "testingstartdate",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "testfinishdate",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "uomcode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"uomcode"
+              }
+            },
+            {
+              "columnName": "defectcode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"defectcode"
+              }
+            },
+            {
+              "columnName": "referenceid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1000
+              }
+            },
+            {
+              "columnName": "lastupdateon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "lastupdatedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "createdon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "createdby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "active",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1
+              }
+            },
+            {
+              "columnName": "lastdeleteon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "lastdeletedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "lastreactivateon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "lastreactivatedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "archiveid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1
+              }
+            },
+            {
+              "columnName": "lastarchiveon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "lastarchivedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "lastrestoreon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "lastrestoredby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NAME"
+              }
+            },
+            {
+              "columnName": "rowversionstamp",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1234
+              }
+            },
+            {
+              "columnName": "specparamid",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"2314"
+              }
+            },
+            {
+              "columnName": "preoperation",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"preoperation"
+              }
+            },
+            {
+              "columnName": "normalpreoperation",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"normalpreoperation"
+              }
+            },
+            {
+              "columnName": "productid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":2345
+              }
+            },
+            {
+              "columnName": "lotno",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"lotno"
+              }
+            },
+            {
+              "columnName": "productno",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "RANDOM_NUMBER"
+              }
+            },
+            {
+              "columnName": "mino",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"mino"
+              }
+            },
+            {
+              "columnName": "wiporderno",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"wiporderno"
+              }
+            },
+            {
+              "columnName": "wipordertype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1234
+              }
+            },
+            {
+              "columnName": "processid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":214124
+              }
+            },
+            {
+              "columnName": "serialno",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"serialno"
+              }
+            },
+            {
+              "columnName": "serialno1",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"serialno1"
+              }
+            },
+            {
+              "columnName": "serialno2",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"serialno2"
+              }
+            },
+            {
+              "columnName": "facility",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"facility"
+              }
+            },
+            {
+              "columnName": "wipline",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"wipline"
+              }
+            },
+            {
+              "columnName": "equipment",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"equipment"
+              }
+            },
+            {
+              "columnName": "inbounddate",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "outbounddate",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "rework",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray":[0, 1]
+              }
+            },
+            {
+              "columnName": "container",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"container"
+              }
+            },
+            {
+              "columnName": "wipcontentclassid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray":[0, 1]
+              }
+            },
+            {
+              "columnName": "test",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray":[0, 1]
+              }
+            },
+            {
+              "columnName": "testorder",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"testorder"
+              }
+            },
+            {
+              "columnName": "testordertype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":1145
+              }
+            },
+            {
+              "columnName": "testprocessid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":114124
+              }
+            },
+            {
+              "columnName": "sorting",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray":[0, 1]
+              }
+            },
+            {
+              "columnName": "sortingorder",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"sortingorder"
+              }
+            },
+            {
+              "columnName": "sortingordertype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":4124
+              }
+            },
+            {
+              "columnName": "sortingprocessid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":4124
+              }
+            },
+            {
+              "columnName": "groupcode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"groupcode"
+              }
+            },
+            {
+              "columnName": "highlowgroup",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"highlowgroup"
+              }
+            },
+            {
+              "columnName": "statuscode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"statuscode"
+              }
+            },
+            {
+              "columnName": "wipstatus",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+                "valueArray":[0, 1]
+              }
+            },
+            {
+              "columnName": "virtuallot",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"virtuallot"
+              }
+            },
+            {
+              "columnName": "childequcode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"childequcode"
+              }
+            },
+            {
+              "columnName": "station",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"station"
+              }
+            },
+            {
+              "columnName": "hisreworkprocessid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":4124
+              }
+            },
+            {
+              "columnName": "gp_time",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            },
+            {
+              "columnName": "qty",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":4124
+              }
+            },
+            {
+              "columnName": "station1",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"station1"
+              }
+            },
+            {
+              "columnName": "etl_date",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+              }
+            }
+          ],
+          "dbKey": "ods",
+          "no": 1,
+          "operateMode": "INSERT",
+          "tableName": "w_prj_atl_wip_his_para"
+        }
+      ]
+    }
+  ]
+}
