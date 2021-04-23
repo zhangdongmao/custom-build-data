@@ -14,6 +14,8 @@ import nny.build.data.builder.service.BuilderService;
 import nny.build.data.builder.service.IJdbcService;
 import nny.build.data.builder.service.JdbcServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import nny.build.data.builder.sink.CSVSinkFunction;
+import nny.build.data.builder.sink.ISinkFunction;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.util.StopWatch;
 
@@ -39,6 +41,7 @@ public class ApplicationRunner {
     private BuilderService builderService;
 
     private IJdbcService jdbcService;
+    private ISinkFunction sinkFunction;
 
     /**
      * 基于java命令行传入参数执行
@@ -54,13 +57,25 @@ public class ApplicationRunner {
             BuilderConfig builderConfig = BuilderConfigLoader.getBuilderConfig();
 
             // 初始化数据库连接
-            builderConfig.getDataSourceConfig().fillConnections();
+//            builderConfig.getDataSourceConfig().fillConnections();
             // 生成示例文件
 //            builderConfig.getExampleConfig().generate();
 
             jdbcService = new JdbcServiceImpl();
 
             builderService = new BuilderService(jdbcService);
+
+            String sinkType = builderConfig.getSinkType();
+            switch (sinkType){
+                case "CSV":
+                    sinkFunction = new CSVSinkFunction();
+                    sinkFunction.initialize();
+                    break;
+                default:
+                    log.error("sink类型配置错误,{}",sinkType);
+                    throw new BuilderException(String.format("sink类型配置错误:%s",sinkType));
+
+            }
         } else {
             log.error("第一个参数需要为配置文件的路径,{}", Arrays.toString(args));
             throw new BuilderException(String.format("参数文件路径未配置:%s", Arrays.toString(args)));
@@ -181,7 +196,9 @@ public class ApplicationRunner {
                 log.info("{} 开始生成业务数据 ", Thread.currentThread().getName());
 
                 List<BuildData> buildDataList = builderService.build(businessDataJson, size);
-                builderService.storage(buildDataList, builderConfig);
+//                builderService.storage(buildDataList, builderConfig);
+                sinkFunction.invoke(buildDataList);
+
 
                 countDownLatch.countDown();
                 log.info("{} 成功生成 {} 组数据入库", Thread.currentThread().getName(), buildDataList.size());
@@ -251,7 +268,8 @@ public class ApplicationRunner {
 
 
             stopWatch.start("数据持久化" + i);
-            builderService.storage(buildDataList, builderConfig);
+            sinkFunction.invoke(buildDataList);
+//            builderService.storage(buildDataList, builderConfig);
             stopWatch.stop();
 
 

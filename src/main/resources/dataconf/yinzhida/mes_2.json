@@ -1,0 +1,714 @@
+{
+  "scenarios": [
+    {
+      "desc": "场景w_mes_characteristic",
+      "tableInfos": [
+        {
+          "desc": "INSERT表数据w_mes_characteristic",
+          "columns": [
+            {
+              "columnName": "characteristic",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "GLOBAL_AUTO_INCREMENT"
+              }
+            },
+            {
+              "columnName": "fuid",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "fuid"
+              }
+            },
+            {
+              "columnName": "textid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "GLOBAL_AUTO_INCREMENT"
+
+              }
+            },
+            {
+              "columnName": "characteristictype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+				"valueArray":[1,2,3,4,5,6]
+              }
+            },
+			{
+              "columnName": "upperspecificationlimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1000
+              }
+            },
+			{
+              "columnName": "uppercontrollimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1000
+              }
+            },
+			{
+              "columnName": "targetvalue",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":300
+              }
+            },
+			{
+              "columnName": "lowercontrollimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":100
+              }
+            },
+			{
+              "columnName": "lowerspecificationlimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1000
+              }
+            },
+			{
+              "columnName": "uomcode",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+                "defaultValue":"uomcode"
+              }
+            },
+			{
+              "columnName": "classificationflag",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+				"valueArray":[2,3,4,5,6,7,8,9]
+              }
+            },
+			{
+              "columnName": "gradeid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "SELECTOR",
+				"valueArray":[2,3,4]
+              }
+            },
+			{
+              "columnName": "numberofdispositions",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1
+              }
+            },
+			{
+              "columnName": "characteristicdecimals",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":11
+              }
+            },
+			{
+              "columnName": "adjustmenttype",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":110
+              }
+            },
+			{
+              "columnName": "adjustmentfactor",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":190
+              }
+            },
+			{
+              "columnName": "facility",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":"QWERTYUIGFS"
+              }
+            },
+			{
+              "columnName": "usage_",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1900
+              }
+            },
+			{
+              "columnName": "characteristicclassid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":1300
+			  }
+			},
+			{
+              "columnName": "uppercoherencelimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":130
+			  }
+			},
+			{
+              "columnName": "lowercoherencelimit",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":160
+			  }
+			},
+			{
+              "columnName": "severity",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":160
+			  }
+			},
+			{
+              "columnName": "referenceid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue":160
+			  }
+			},
+			{
+              "columnName": "lastupdateon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "lastupdatedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "lastupdatedby11"
+			  }
+			},
+			{
+              "columnName": "createdon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "createdby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "createdby111"
+			  }
+			},
+			{
+              "columnName": "active",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": 1
+			  }
+			},
+			{
+              "columnName": "lastdeleteon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "lastdeletedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "lastdeletedby11"
+			  }
+			},
+			{
+              "columnName": "lastreactivateon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "lastreactivatedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "lastreactivatedby11"
+			  }
+			},
+			{
+              "columnName": "archiveid",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": 33
+			  }
+			},
+			{
+              "columnName": "lastarchiveon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "lastarchivedby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "lastarchivedby44"
+			  }
+			},
+			{
+              "columnName": "lastrestoreon",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			},
+			{
+              "columnName": "lastrestoredby",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "lastrestoredby33"
+			  }
+			},
+			{
+              "columnName": "rowversionstamp",
+              "comment": "",
+              "dataType": "INTEGER",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": 45
+			  }
+			},
+			{
+              "columnName": "dsid",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "dsid45"
+			  }
+			},
+			{
+              "columnName": "dsname",
+              "comment": "",
+              "dataType": "STRING",
+              "valueRule": {
+                "type": "NORMAL",
+				"defaultValue": "dsname45"
+			  }
+			},
+			{
+              "columnName": "etl_date",
+              "comment": "",
+              "dataType": "DATE",
+              "valueRule": {
+                "type": "RANDOM_DATE"
+			  }
+			}
+          ],
+          "relations": [
+            {
+              "desc": "INSERT表数据w_mes_text_translation",
+              "relationType": "ONE_TO_MANY",
+              "relationRowNumExpression": "200",
+              "relationTable": {
+                "tableInStateDefinition": {
+                  "tableFixedValues": {
+                    "languageid": [
+                      1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+                      21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+                      41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
+                      61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,
+                      81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,
+                      101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,
+                      121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,
+                      141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,
+                      161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,
+                      181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200
+                    ]
+                  }
+                },
+                "columns": [
+                  {
+                    "columnName": "textid",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+						"refColumnExpression":"${1.w_mes_characteristic.textid}"
+                    }
+                  },
+                  {
+                    "columnName": "languageid",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "FIXED_VALUE"
+                    }
+                  },
+                  {
+                    "columnName": "micro",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+					  "defaultValue": "1"
+                    }
+                  },
+                  {
+                    "columnName": "short",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+					  "defaultValue": "short22"
+                    }
+                  },
+                  {
+                    "columnName": "medium",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+					  "defaultValue": "medium22"
+                    }
+                  },
+                  {
+                    "columnName": "extended",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+					  "defaultValue": "extended22"
+                    }
+                  },
+                  {
+                    "columnName": "text",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "text文本内容"
+                    }
+                  },
+                  {
+                    "columnName": "microaudiourl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "microaudiourl"
+                    }
+                  },
+				  {
+                    "columnName": "shortaudiourl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "shortaudiourl"
+                    }
+                  },
+				  {
+                    "columnName": "mediumaudiourl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "mediumaudiourl"
+                    }
+                  },
+				  {
+                    "columnName": "longaudiourl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "longaudiourl"
+                    }
+                  },
+				  {
+                    "columnName": "textaudiourl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "textaudiourl"
+                    }
+                  },
+				  {
+                    "columnName": "smalliconurl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "smalliconurl"
+                    }
+                  },
+				  {
+                    "columnName": "mediumiconurl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "mediumiconurl"
+                    }
+                  },
+				  {
+                    "columnName": "largeiconurl",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "NORMAL",
+                      "defaultValue": "largeiconurl"
+                    }
+                  },
+				  {
+                    "columnName": "orgchecksum",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "RANDOM_MONEY"
+                    }
+                  },
+				  {
+                    "columnName": "custchecksum",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "RANDOM_MONEY"
+                    }
+                  },
+				  {
+                    "columnName": "referenceid",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.referenceid}"
+                    }
+                  },
+				  {
+                    "columnName": "lastupdateon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastupdateon}"
+                    }
+                  },
+				  {
+                    "columnName": "lastupdatedby",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastupdatedby}"
+                    }
+                  },
+				  {
+                    "columnName": "createdon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.createdon}"
+                    }
+                  },
+				  {
+                    "columnName": "createdby",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.createdby}"
+                    }
+                  },
+				  {
+                    "columnName": "active",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.active}"
+                    }
+                  },
+				  {
+                    "columnName": "lastdeleteon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastdeleteon}"
+                    }
+                  },
+				  {
+                    "columnName": "lastdeletedby",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastdeletedby}"
+                    }
+                  },
+				  {
+                    "columnName": "lastreactivateon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastreactivateon}"
+                    }
+                  },
+				  {
+                    "columnName": "lastreactivatedby",
+                    "comment": "",
+                    "dataType": "STRING",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastreactivatedby}"
+                    }
+                  },
+				  {
+                    "columnName": "archiveid",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.archiveid}"
+                    }
+                  },
+				  {
+                    "columnName": "lastarchiveon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastarchiveon}"
+                    }
+                  },
+				  {
+                    "columnName": "lastarchivedby",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastarchivedby}"
+                    }
+                  },
+				  {
+                    "columnName": "lastrestoreon",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastrestoreon}"
+                    }
+                  },
+				  {
+                    "columnName": "lastrestoredby",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.lastrestoredby}"
+                    }
+                  },
+				  {
+                    "columnName": "rowversionstamp",
+                    "comment": "",
+                    "dataType": "INTEGER",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.rowversionstamp}"
+                    }
+                  },
+				  {
+                    "columnName": "etl_date",
+                    "comment": "",
+                    "dataType": "DATE",
+                    "valueRule": {
+                      "type": "REFERENCE",
+					  "refColumnExpression":"${1.w_mes_characteristic.etl_date}"
+                    }
+                  }
+                ],
+
+                "dbKey": "dwd",
+                "no": 2,
+                "operateMode": "INSERT",
+                "tableName": "w_mes_text_translation"
+              }
+            }
+          ],
+          "dbKey": "dwd",
+          "no": 1,
+          "operateMode": "INSERT",
+          "tableName": "w_mes_characteristic"
+        }
+      ]
+    }
+  ]
+}

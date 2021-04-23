@@ -35,7 +35,7 @@ public class BusinessDataJson implements Serializable {
     public void selectScene() {
         this.scenarioIndex = RandomUtils.nextInt(0, scenarios.size());
         if (log.isDebugEnabled()) {
-            log.debug("当前选择场景: {}", this.getScenarios().get(this.scenarioIndex).getDesc());
+            log.debug("当前选择场景--: {}", this.getScenarios().get(this.scenarioIndex).getDesc());
         }
     }
 

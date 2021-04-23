@@ -54,4 +54,14 @@ public class BuilderConfig {
      * 全局自增Id保存文件地址
      */
     private String globalAutoIncrementFilePath;
+
+    /**
+     * 数据输出方式
+     */
+    private String sinkType;
+
+    /**
+     * CSV sink文件路径
+     */
+    private String CSVSinkFilePath;
 }
