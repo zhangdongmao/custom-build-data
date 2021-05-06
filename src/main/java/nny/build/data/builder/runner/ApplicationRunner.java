@@ -16,6 +16,7 @@ import nny.build.data.builder.service.JdbcServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import nny.build.data.builder.sink.CSVSinkFunction;
 import nny.build.data.builder.sink.ISinkFunction;
+import nny.build.data.builder.sink.KafkaSinkFunction;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.util.StopWatch;
 
@@ -40,7 +41,7 @@ public class ApplicationRunner {
 
     private BuilderService builderService;
 
-    private IJdbcService jdbcService;
+//    private IJdbcService jdbcService;
     private ISinkFunction sinkFunction;
 
     /**
@@ -61,14 +62,18 @@ public class ApplicationRunner {
             // 生成示例文件
 //            builderConfig.getExampleConfig().generate();
 
-            jdbcService = new JdbcServiceImpl();
+//            jdbcService = new JdbcServiceImpl();
+//            builderService = new BuilderService(jdbcService);
 
-            builderService = new BuilderService(jdbcService);
-
-            String sinkType = builderConfig.getSinkType();
+            builderService = new BuilderService();
+            String sinkType = builderConfig.getSinkConfig().getType();
             switch (sinkType){
-                case "CSV":
+                case "csv":
                     sinkFunction = new CSVSinkFunction();
+                    sinkFunction.initialize();
+                    break;
+                case "kafka":
+                    sinkFunction = new KafkaSinkFunction();
                     sinkFunction.initialize();
                     break;
                 default:
@@ -99,10 +104,10 @@ public class ApplicationRunner {
             final BusinessDataJson businessDataJson = builderService.loadJsonFile(builderConfig.getDataJsonFilePath());
 
             // 构建DDL
-            buildDdl(builderConfig);
+//            buildDdl(builderConfig);
 
             // 清理Sql日志文件夹
-            cleanSqlNoteFolder(builderConfig);
+//            cleanSqlNoteFolder(builderConfig);
 
             // 构建数据
             if (threadConfig.getSingleThreadDebug()) {
@@ -119,38 +124,38 @@ public class ApplicationRunner {
 
     }
 
-    /**
-     * 构建DDL
-     *
-     * @param builderConfig 配置文件
-     */
-    private void buildDdl(BuilderConfig builderConfig) {
-
-        DataSourceConfig dataSourceConfig = builderConfig.getDataSourceConfig();
-
-        if (dataSourceConfig.getAutoDDl()) {
-            StopWatch stopWatch = new StopWatch();
-            stopWatch.start("DDL任务");
-
-            // 配置文件加载 业务数据生成JSON
-            final List<TableInfo> tableInfos = builderService.loadDDlJsonFile(builderConfig.getDataDDLJsonFilePath());
-
-            // dbKey-sqlList
-            Map<String, List<String>> sqlMap = builderService.buildDDl(tableInfos);
-
-            // 执行DDL
-            boolean result = jdbcService.executeDdl(dataSourceConfig, sqlMap);
-
-            if (!result) {
-                throw new BuilderException(String.format("DDL执行失败, {%s}", sqlMap));
-            }
-
-            log.info("DDL执行成功: {}", JSONObject.toJSONString(sqlMap));
-
-            stopWatch.stop();
-            log.info(stopWatch.prettyPrint());
-        }
-    }
+//    /**
+//     * 构建DDL
+//     *
+//     * @param builderConfig 配置文件
+//     */
+//    private void buildDdl(BuilderConfig builderConfig) {
+//
+//        DataSourceConfig dataSourceConfig = builderConfig.getDataSourceConfig();
+//
+//        if (dataSourceConfig.getAutoDDl()) {
+//            StopWatch stopWatch = new StopWatch();
+//            stopWatch.start("DDL任务");
+//
+//            // 配置文件加载 业务数据生成JSON
+//            final List<TableInfo> tableInfos = builderService.loadDDlJsonFile(builderConfig.getDataDDLJsonFilePath());
+//
+//            // dbKey-sqlList
+//            Map<String, List<String>> sqlMap = builderService.buildDDl(tableInfos);
+//
+//            // 执行DDL
+//            boolean result = jdbcService.executeDdl(dataSourceConfig, sqlMap);
+//
+//            if (!result) {
+//                throw new BuilderException(String.format("DDL执行失败, {%s}", sqlMap));
+//            }
+//
+//            log.info("DDL执行成功: {}", JSONObject.toJSONString(sqlMap));
+//
+//            stopWatch.stop();
+//            log.info(stopWatch.prettyPrint());
+//        }
+//    }
 
     /**
      * 线程池执行
@@ -198,8 +203,6 @@ public class ApplicationRunner {
                 List<BuildData> buildDataList = builderService.build(businessDataJson, size);
 //                builderService.storage(buildDataList, builderConfig);
                 sinkFunction.invoke(buildDataList);
-
-
                 countDownLatch.countDown();
                 log.info("{} 成功生成 {} 组数据入库", Thread.currentThread().getName(), buildDataList.size());
                 log.info("已生成 {} 组数据入库", (count - countDownLatch.getCount() - 1) * size + lastSize);
@@ -286,7 +289,7 @@ public class ApplicationRunner {
      */
     private void cleanResources(BuilderConfig builderConfig) {
         DataSourceConfig dataSourceConfig = builderConfig.getDataSourceConfig();
-        jdbcService.closeDbConnection(dataSourceConfig);
+//        jdbcService.closeDbConnection(dataSourceConfig);
         GlobalAutoIncrementValueRule.writeBackGlobalAutoIncrement();
 
         String todayStr = DateFormatUtils.format(new Date(), "yyyyMMdd");

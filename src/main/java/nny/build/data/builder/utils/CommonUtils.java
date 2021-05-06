@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -97,6 +99,28 @@ public class CommonUtils {
             e.printStackTrace();
             throw new BuilderException("deep error");
         }
+    }
+
+    /**
+     * 合并ConcurrentHashMap
+     * @param CSVMap1
+     * @param CSVMap2
+     * @return
+     */
+    public static ConcurrentHashMap<String, List<String>> mergeCSVMap(ConcurrentHashMap<String, List<String>> CSVMap1, ConcurrentHashMap<String, List<String>> CSVMap2){
+        if (CSVMap1.isEmpty()){
+            return CSVMap2;
+        }else if (CSVMap2.isEmpty()){
+            return CSVMap1;
+        }
+        for (Map.Entry<String, List<String>> entry :CSVMap1.entrySet()){
+            if (CSVMap2.containsKey(entry.getKey())){
+                CSVMap2.get(entry.getKey()).addAll(entry.getValue());
+            }else {
+                CSVMap2.put(entry.getKey(),entry.getValue());
+            }
+        }
+        return CSVMap2;
     }
 
     public static void main(String[] args) {

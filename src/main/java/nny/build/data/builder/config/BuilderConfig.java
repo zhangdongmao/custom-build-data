@@ -3,6 +3,7 @@ package nny.build.data.builder.config;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import nny.build.data.builder.config.sinkConfig.SinkConfig;
 
 /**
  * 配置文件
@@ -54,14 +55,8 @@ public class BuilderConfig {
      * 全局自增Id保存文件地址
      */
     private String globalAutoIncrementFilePath;
-
     /**
      * 数据输出方式
      */
-    private String sinkType;
-
-    /**
-     * CSV sink文件路径
-     */
-    private String CSVSinkFilePath;
+    private SinkConfig sinkConfig;
 }

@@ -3,6 +3,8 @@ package nny.build.data.builder.sink;
 import lombok.extern.slf4j.Slf4j;
 import nny.build.data.builder.config.BuilderConfig;
 import nny.build.data.builder.config.BuilderConfigLoader;
+import nny.build.data.builder.config.sinkConfig.CsvSinkConfig;
+import nny.build.data.builder.config.sinkConfig.SinkConfig;
 import nny.build.data.builder.exception.BuilderException;
 import nny.build.data.builder.model.build.BuildData;
 import nny.build.data.builder.model.build.BuildExpression;
@@ -28,7 +30,8 @@ public class CSVSinkFunction implements ISinkFunction {
     public void invoke(List<BuildData> buildDataList) {
         log.info("开始写入CSV文件");
         BuilderConfig builderConfig = BuilderConfigLoader.getBuilderConfig();
-        String csvSinkFilePath = builderConfig.getCSVSinkFilePath();
+        CsvSinkConfig sinkConfig = (CsvSinkConfig)builderConfig.getSinkConfig();
+        String csvSinkFilePath = sinkConfig.getCsvSinkFilePath();
         ConcurrentHashMap<String,List<String>> CSVMap = new ConcurrentHashMap<>();
 
         if (StringUtils.isNotEmpty(csvSinkFilePath)){

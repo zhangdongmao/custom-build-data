@@ -36,11 +36,16 @@ exampleConfig:
       password: root
 
 # 设置构建多少组数据
-buildNumber: 10000
+buildNumber: 10
 
-sinkType: CSV
 
-CSVSinkFilePath: D:\code\custom-build-data\src\main\resources\dataconf\yinzhida\csv
+sinkConfig:
+#  type: csv
+#  csvSinkFilePath: D:\code\custom-build-data\src\main\resources\dataconf\yinzhida\csv
+
+  type: kafka
+  bootStrapServers: longdb02-data:9092
+  topics: ods.w_prj_atl_wip_his_para -> test_streaming
 
 ## DML配置文件路径
 #dataJsonFilePath: G:\下载\custom-build-data-master\custom-build-data-master\src\main\resources\dataconf\example\insurance.json

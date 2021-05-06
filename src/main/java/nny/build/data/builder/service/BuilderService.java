@@ -32,11 +32,11 @@ import java.util.*;
  */
 @Slf4j
 public class BuilderService {
+//
+//    private IJdbcService jdbcService;
 
-    private IJdbcService jdbcService;
-
-    public BuilderService(IJdbcService jdbcService) {
-        this.jdbcService = jdbcService;
+    public BuilderService() {
+//        this.jdbcService = jdbcService;
     }
 
 
@@ -467,28 +467,28 @@ public class BuilderService {
     }
 
 
-    /**
-     * 构建完成的数据进行入库
-     *
-     * @param buildDataList 构建数据对象集合
-     * @param builderConfig 配置文件
-     */
-    public void storage(List<BuildData> buildDataList, BuilderConfig builderConfig) {
-        // 填充sqlDataMap
-        buildDataList.forEach(BuildData::fillSqlMap);
-
-        // 构建SQLData
-        Map<String, List<BuildSqlData>> sqlDataMap = buildSqlDataMap(buildDataList);
-
-
-        buildSqlNoteFile(sqlDataMap, this.getSqlNoteFolderPath(builderConfig));
-
-        boolean result = jdbcService.executeDml(builderConfig.getDataSourceConfig(), sqlDataMap);
-
-        if (!result) {
-            throw new BuilderException(String.format("DML执行失败, {%s}", JSONObject.toJSONString(sqlDataMap)));
-        }
-    }
+//    /**
+//     * 构建完成的数据进行入库
+//     *
+//     * @param buildDataList 构建数据对象集合
+//     * @param builderConfig 配置文件
+//     */
+//    public void storage(List<BuildData> buildDataList, BuilderConfig builderConfig) {
+//        // 填充sqlDataMap
+//        buildDataList.forEach(BuildData::fillSqlMap);
+//
+//        // 构建SQLData
+//        Map<String, List<BuildSqlData>> sqlDataMap = buildSqlDataMap(buildDataList);
+//
+//
+//        buildSqlNoteFile(sqlDataMap, this.getSqlNoteFolderPath(builderConfig));
+//
+//        boolean result = jdbcService.executeDml(builderConfig.getDataSourceConfig(), sqlDataMap);
+//
+//        if (!result) {
+//            throw new BuilderException(String.format("DML执行失败, {%s}", JSONObject.toJSONString(sqlDataMap)));
+//        }
+//    }
 
     public void mergeSqlNote(String folderPath) {
 

@@ -1,7 +1,10 @@
 package nny.build.data.builder.config;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import nny.build.data.builder.model.BusinessDataJson;
 import org.ho.yaml.Yaml;
 
 import java.io.File;
@@ -35,7 +38,10 @@ public class BuilderConfigLoader {
             // List<DataSourceInfo> dataSourceInfos的DataSourceInfo转换成了HashMap
             // 使用json进行反序列化
             String json = JSONObject.toJSONString(object);
-            builderConfig = JSONObject.parseObject(json, BuilderConfig.class);
+            ObjectMapper objectMapper = new ObjectMapper();
+            builderConfig = objectMapper.readValue(json, new TypeReference<BuilderConfig>() {
+            });
+//            builderConfig = JSONObject.parseObject(json, BuilderConfig.class);
             load = true;
 
         } catch (IOException e) {
